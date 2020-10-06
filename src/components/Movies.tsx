@@ -1,8 +1,6 @@
 import React from "react"
-import { useMovieList } from "../hooks"
 import useTeachingVideos from "../hooks/useTeachingVideos"
 import { Movie } from "../interfaces/Movie"
-import { MovieList } from "../interfaces/MovieList"
 
 const Movies = () => {
   const { isLoading, teachingVideo } = useTeachingVideos()
