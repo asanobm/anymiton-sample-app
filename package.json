@@ -44,5 +44,5 @@
     "@types/http-proxy-middleware": "^0.19.3",
     "dotenv": "^8.2.0"
   },
-  "proxy": "https://api.customer.jp"
+  "proxy": "http://localhost:5000"
 }

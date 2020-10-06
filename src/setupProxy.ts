@@ -1,18 +1,23 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { API } from './config/Api';
+import { API_DOMAIN } from './config/Env';
 
 const HOST = (path: string) => {
-    return `https://api.customer.jp${path}`
+  return `${API_DOMAIN}${path}`
 }
-
-console.log(HOST(API.GET_TOKEN))
 
 module.exports = function(app: any) {
   app.use(
-    API.GET_TOKEN,
+    API.GET_MOVIES,
     createProxyMiddleware({
-      target: HOST(API.GET_TOKEN),
-    //   target: HOST+API.GET_TOKEN,
+      target: HOST(API.GET_MOVIES),
+      changeOrigin: true,
+    })
+  );
+  app.use(
+    API.GET_TEACHING_VIDEO,
+    createProxyMiddleware({
+      target: HOST(API.GET_TEACHING_VIDEO),
       changeOrigin: true,
     })
   );
