@@ -1,4 +1,2 @@
 import useMovieList from './useMovieList'
-export {
-  useMovieList
-}
+export { useMovieList }

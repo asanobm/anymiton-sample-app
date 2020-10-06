@@ -1,11 +1,11 @@
-import Axios, { AxiosError, AxiosResponse } from "axios"
-import { useEffect, useState } from "react"
-import { API } from "../config/Api"
-import { MovieList } from "../interfaces/MovieList"
-import useIsLoading from "./useIsLoading"
+import Axios, { AxiosError, AxiosResponse } from 'axios'
+import { useEffect, useState } from 'react'
+import { API } from '../config/Api'
+import { MovieList } from '../interfaces/MovieList'
+import useIsLoading from './useIsLoading'
 
 const useTeachingVideos = () => {
-  const {isLoading, setIsLoading} = useIsLoading()
+  const { isLoading, setIsLoading } = useIsLoading()
   const [teachingVideo, setTeachingVideo] = useState<MovieList>()
 
   useEffect(() => {
@@ -17,10 +17,10 @@ const useTeachingVideos = () => {
         .finally(() => setIsLoading(false))
     }
     getMovie()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return {isLoading, teachingVideo}
+  return { isLoading, teachingVideo }
 }
 
 export default useTeachingVideos
