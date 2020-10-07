@@ -16,7 +16,7 @@ const useTeachingVideos = () => {
   useEffect(() => {
     const getMovie = async () => {
       setIsLoading(true)
-      await Axios.get(API.GET_TEACHING_VIDEO)
+      await Axios.get(API.GET_TEACHING_VIDEOS)
         .then((res: AxiosResponse<Video[]>) => handleResponse(res))
         .catch((err: AxiosError) => console.error(err))
         .finally(() => setIsLoading(false))

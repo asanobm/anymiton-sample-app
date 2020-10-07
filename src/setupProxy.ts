@@ -15,9 +15,16 @@ module.exports = function (app: any) {
     })
   )
   app.use(
-    API.GET_TEACHING_VIDEO,
+    API.GET_TEACHING_VIDEOS,
     createProxyMiddleware({
-      target: HOST(API.GET_TEACHING_VIDEO),
+      target: HOST(API.GET_TEACHING_VIDEOS),
+      changeOrigin: true,
+    })
+  )
+  app.use(
+    API.DOWNLOAD_TEACHING_VIDEO,
+    createProxyMiddleware({
+      target: HOST(API.DOWNLOAD_TEACHING_VIDEO),
       changeOrigin: true,
     })
   )
