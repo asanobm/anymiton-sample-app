@@ -1,13 +1,22 @@
 import React from 'react'
+import { Space } from 'antd'
 
-import { Layout } from 'antd'
-import { Video } from '../interfaces/Video'
+import ReactPlayer from 'react-player'
+import { API } from '../config/Api'
 
-const VideoPlayer: React.FC<Video> = (prop: Video) => {
+interface VideoPlayerProps {
+  title: string
+}
+
+const VideoPlayer = (props: VideoPlayerProps) => {
   return (
-    <Layout>
-      <span>player</span>
-    </Layout>
+    <Space align="center" style={{ flexDirection: 'column' }}>
+      <ReactPlayer
+        height="300"
+        playing={true}
+        url={`${API.DOWNLOAD_TEACHING_VIDEO}/${props.title}`}
+      />
+    </Space>
   )
 }
 
