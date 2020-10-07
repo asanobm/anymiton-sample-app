@@ -9,7 +9,7 @@ const TeachingVideos = () => {
   return (
     <Layout>
       {teachingVideos?.map((v: Video) => (
-        <Link to={`/video/${v}`} key={v.title}>
+        <Link to={`/video/${v.title}`} key={v.title}>
           <Card style={{ width: 300 }} title={v.title}></Card>
         </Link>
       ))}
