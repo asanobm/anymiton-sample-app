@@ -6,13 +6,18 @@ import useIsLoading from './useIsLoading'
 
 const useTeachingVideos = () => {
   const { isLoading, setIsLoading } = useIsLoading()
-  const [teachingVideo, setTeachingVideo] = useState<MovieList>()
+  const [teachingVideos, setTeachingVideos] = useState<MovieList>()
+
+  const handleResponse = (response: AxiosResponse<MovieList>) => {
+    console.info(response.data)
+    setTeachingVideos(response.data)
+  }
 
   useEffect(() => {
     const getMovie = async () => {
       setIsLoading(true)
       await Axios.get(API.GET_TEACHING_VIDEO)
-        .then((res: AxiosResponse) => setTeachingVideo(res))
+        .then((res: AxiosResponse) => handleResponse(res))
         .catch((err: AxiosError) => console.error(err))
         .finally(() => setIsLoading(false))
     }
@@ -20,7 +25,7 @@ const useTeachingVideos = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return { isLoading, teachingVideo }
+  return { isLoading, teachingVideos }
 }
 
 export default useTeachingVideos
