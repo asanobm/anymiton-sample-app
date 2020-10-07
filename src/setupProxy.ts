@@ -28,4 +28,11 @@ module.exports = function (app: any) {
       changeOrigin: true,
     })
   )
+  app.use(
+    API.UPLOAD_STUDENT_VIDEO,
+    createProxyMiddleware({
+      target: HOST(API.UPLOAD_STUDENT_VIDEO),
+      changeOrigin: true,
+    })
+  )
 }
