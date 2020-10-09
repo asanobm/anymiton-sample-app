@@ -6,17 +6,21 @@ import { API } from '../config/Api'
 
 interface VideoPlayerProps {
   title: string
+  playing?: boolean
+  height: number
+  onPlay?: () => void
+  onEnded?: () => void
 }
 
 const VideoPlayer = (props: VideoPlayerProps) => {
   return (
-    <Space align="center" style={{ flexDirection: 'column' }}>
-      <ReactPlayer
-        height="300"
-        playing={true}
-        url={`${API.DOWNLOAD_TEACHING_VIDEO}/${props.title}`}
-      />
-    </Space>
+    <ReactPlayer
+      onPlay={props.onPlay}
+      onEnded={props.onEnded}
+      height={props.height}
+      playing={props.playing ? true : false}
+      url={`${API.DOWNLOAD_TEACHING_VIDEO}/${props.title}`}
+    />
   )
 }
 
