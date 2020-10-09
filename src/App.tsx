@@ -4,25 +4,25 @@ import Header from './components/Header'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import ConfigPage from './pages/ConfigPage'
-import useIsLoading from './hooks/useIsLoading'
 import VideoPage from './pages/VideoPage'
+import RecordPage from './pages/RecordPage'
+import useLoading from './hooks/useLoading'
 
 const App: React.FC = () => {
-  const { isLoading } = useIsLoading()
+  const { isLoading } = useLoading()
   return (
     <Layout>
-      {isLoading ? (
-        <Spin tip="Loading..."></Spin>
-      ) : (
-        <Router>
-          <Header />
+      <Router>
+        <Header />
+        <Spin spinning={isLoading} size="large" tip="動画を比較しています。">
           <Layout>
             <Route exact path="/" component={HomePage}></Route>
             <Route path="/config" component={ConfigPage}></Route>
             <Route path="/video/:title" component={VideoPage}></Route>
+            <Route path="/record/:title" component={RecordPage}></Route>
           </Layout>
-        </Router>
-      )}
+        </Spin>
+      </Router>
     </Layout>
   )
 }
